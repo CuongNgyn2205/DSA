@@ -11,46 +11,27 @@ void outputArray(int *a, int n){
         cout<<a[i] << " ";
     }
 }
-void Merge(int *b, int *c , int *a){
-    int leftsize = (sizeof(a)/sizeof(a[0])/2);
-    int rightsize = (sizeof(a)/sizeof(a[0])) - leftsize;
-    int i = 0, l = 0, r = 0;
-    while(l < leftsize && r < rightsize){
-        if(b[l]<c[r]){
-            a[i++] = b[l++];
-        }
-        else {
-            a[i++] = c[r++];
-        }
+void Merge(int *a, int l, int mid, int r){
+    int *b = new int [mid];
+    int *c = new int [(r-l)];
+    int i = 0,j = 0;
+    while(i<mid && j < (r-l)){
+        
     }
-    while(l<leftsize){a[i++] = b[l++];}
-    while(r<rightsize){a[i++] = c[r++];}
 }
-void MergeSort(int *a,int n){
-    int length = sizeof(a)/sizeof(a[0]);
-    if(length <= 1){
+void MergeSort(int *a,int l,int r){
+    if(l>=r){
         return;
     }
-    int mid = length/2;
-    int *b = new int [mid];
-    int *c = new int [length - mid];
-    int i = 0, j = 0;
-    for(i;i<length;i++){
-        if(i < mid){
-            b[i] = a[i];
-        }
-        else {
-            c[j] = a[i];
-            j++;
-        }
-    }
-    Merge(b,c,a);
+    int mid = (l+r)/2;
+    MergeSort(a,l,mid);MergeSort(a,mid+1,r);
+    Merge(a,l,mid,r);
 }
 int main(){
     int *a, n;
     cin>>n;
     inputArray(a,n);
-    MergeSort(a,n);
+    MergeSort(a,0,n-1);
     outputArray(a,n);
     system("pause");
     return 0;

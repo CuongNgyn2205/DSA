@@ -42,9 +42,9 @@ void addTail(List &L, int x){
         L.Tail = p;
     }
 }
-Node* searchEle(List L, int key){
-    Node*p = L.Head;
-    while(p!=NULL){ 
+Node* searchEle(List &L, int key){
+    Node* p = L.Head;
+    while(p!=NULL){
         if(p->info == key){
             return p;
         }
@@ -52,25 +52,30 @@ Node* searchEle(List L, int key){
     }
     return NULL;
 }
-void AddAfter(List &L, int x, int y){
-    Node*p = searchEle(L,x);
-    Node* temp = GetNode(y);
-    if(p==NULL){
-        return;
+void AddAfter(List &L, int key, int x){
+    Node*curr = searchEle(L,key);
+    Node* temp = GetNode(x);
+    if(curr == NULL){
+        addHead(L,x);
     }
-    else{
-        temp->next = p->next;
-        p->next = temp;
+    else {
+        temp->next = curr->next;
+        curr->next = temp;
     }
+}
+void Delete_Head(List &L){
+    Node* p = L.Head;
+    L.Head = L.Head->next;
+    p->next = NULL;
 }
 void Print(List L){
     Node *p = L.Head;
     if(p == NULL){
-        cout<<"List is empty"<<endl;
+        cout<<"blank"<<endl;
     }
-    while(p != NULL){
-        cout<<p->info<<" ";
-        p=p->next;
+    while(p){
+        cout<<p->info <<" ";
+        p = p ->next;
     }
     cout<<endl;
 }
@@ -80,7 +85,7 @@ int main(){
     int x;
     while(1){
         cin>>x;
-        if(x==3){
+        if(x==6){
             break;
         }
         switch(x){
@@ -99,6 +104,10 @@ int main(){
                 int y,z;
                 cin>>y>>z;
                 AddAfter(L,y,z);
+                break;
+            }
+            case 5:{
+                Delete_Head(L);
                 break;
             }
         }
