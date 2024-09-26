@@ -55,8 +55,8 @@ Node* searchEle(List L, int key){
 void AddAfter(List &L, int x, int y){
     Node*p = searchEle(L,x);
     Node* temp = GetNode(y);
-    if(p==NULL){
-        return;
+    if(p == NULL){
+        addHead(L,y);
     }
     else{
         temp->next = p->next;
@@ -66,7 +66,7 @@ void AddAfter(List &L, int x, int y){
 void Print(List L){
     Node *p = L.Head;
     if(p == NULL){
-        cout<<"List is empty"<<endl;
+        cout<<"blank"<<endl;
     }
     while(p != NULL){
         cout<<p->info<<" ";

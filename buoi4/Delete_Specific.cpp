@@ -1,3 +1,14 @@
+/*###Begin banned keyword - each of the following line if appear in code will raise error. regex supported
+define
+include
+###End banned keyword*/
+
+#include <iostream>
+using namespace std;
+
+
+//###INSERT CODE HERE -
+
 
 #include <iostream>
 using namespace std;
@@ -47,6 +58,7 @@ Node* searchEle(List L, int key){
     }
     return NULL;
 }
+
 void AddAfter(List &L, int x, int y){
     Node*p = searchEle(L,x);
     Node* temp = GetNode(y);
@@ -72,6 +84,20 @@ void Delete_Head(List &L){
         if(L.Head == NULL){
             L.Tail = NULL;
         }
+    }
+}
+void Delete_Specific(List &L, int x){
+    Node*curr = searchEle(L,x);
+    if(curr==NULL){
+        return;
+    }
+    else if(curr == L.Head){
+        Delete_Head(L);
+    }
+    else {
+        Node* temp = curr;
+        
+        
     }
 }
 void Print(List L){
@@ -115,9 +141,9 @@ int main(){
                 break;
             }
             case 3:{
-                int y,z;
-                cin>>y>>z;
-                Delete_Specific(L,y,z);
+                int y;
+                cin>>y;
+                Delete_Specific(L,y);
             }
             case 5:{
                 Delete_Head(L);break;
