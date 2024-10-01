@@ -58,7 +58,6 @@ Node* searchEle(List L, int key){
     }
     return NULL;
 }
-
 void AddAfter(List &L, int x, int y){
     Node*p = searchEle(L,x);
     Node* temp = GetNode(y);
@@ -72,6 +71,19 @@ void AddAfter(List &L, int x, int y){
             L.Tail = temp;
         }
     }
+}
+Node* searchBefore(List L, int x){
+    Node * temp = L.Head;
+    while(temp){
+        if(temp->next->info == x){
+            return temp;
+        }
+        else if(temp->info == x){
+            return L.Head;
+        }
+        temp = temp->next;
+    }
+    return NULL;
 }
 void Delete_Head(List &L){
     if(L.Head == NULL){
@@ -87,18 +99,7 @@ void Delete_Head(List &L){
     }
 }
 void Delete_Specific(List &L, int x){
-    Node*curr = searchEle(L,x);
-    if(curr==NULL){
-        return;
-    }
-    else if(curr == L.Head){
-        Delete_Head(L);
-    }
-    else {
-        Node* temp = curr;
-        
-        
-    }
+    
 }
 void Print(List L){
     Node *p = L.Head;

@@ -14,10 +14,10 @@ void Quick_Sort(int *a, int l, int r,int &cnt){
         return;
     }
     while(i<=j){
-        while(a[i] > pivot){
+        while(a[i] < pivot){
             i++;
         }
-        while(a[j] < pivot){
+        while(a[j] > pivot){
             j--;
         }
         if(i <= j){
