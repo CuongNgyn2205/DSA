@@ -23,30 +23,28 @@ void outputVec(vector<P> list){
     for(int i = 0 ;i < list.size();i++){
         cout<<list[i].x<<" "<<list[i].y<<endl;
     }
+    vector<P>().swap(list);
 }
-void quick_Sort(vector<P> &list, int l, int r){
-    int i = l, j = r;
-    while(i<=j){
-        P pivot = list[l + (r-l)/2];
-        while((list[i].x < pivot.x) ||(list[i].x == pivot.x && list[i].y < pivot.y)){i++;}
-        while((list[j].x > pivot.x) || (list[j].x == pivot.x && list[j].y > pivot.y)){j--;}
-        if(i<=j){
-            swap(list[i],list[j]);
-            i++;
-            j--;
+void sele_s(vector<P> &list){
+    for(int i = 0 ;i < list.size() - 1;i ++){
+        int min = i;
+        for(int j = i + 1 ; j< list.size(); j ++){
+            if(list[min].x > list[i].x){
+                min = j;
+            }
+            else if ((list[min].x == list[i].x) && (list[min].y > list[i].y)){
+                min = j;
+            }
         }
-       
+        swap(list[i],list[min]);
     }
-    if(l < j){
-        quick_Sort(list,l,j);
-    }
-    if(r > i){quick_Sort (list,i,r);}
 }
 int main(){
     vector<P> list;
     int n;cin>>n;
     inputVec(list,n);
-    quick_Sort(list,0,n-1);
+    sele_s(list);
     outputVec(list);
+    vector<P>().swap(list);
     return 0;
 }
