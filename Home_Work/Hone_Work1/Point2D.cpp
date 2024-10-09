@@ -25,7 +25,9 @@ void outputVec(vector<P> list){
     for(int i =0 ;i < list.size();i ++){
         cout<<list[i].x << " "<<list[i].y<<endl;
     }
+    vector<P>().swap(list);
 }
+<<<<<<< HEAD
 void Merge(vector<P> &list,int l, int mid, int r){
     int n1 = mid - l + 1;
     int n2 = r - mid;
@@ -60,12 +62,34 @@ void MergeSort(vector<P> &list, int l, int r){
         MergeSort(list,mid+1,r);
         Merge(list,l,mid,r);
     }
+=======
+void sele_s(vector<P> &list){
+    for(int i = 0 ;i < list.size() - 1;i ++){
+        int min = i;
+        for(int j = i + 1 ; j< list.size(); j ++){
+            if(list[min].x > list[i].x){
+                min = j;
+            }
+            else if ((list[min].x == list[i].x) && (list[min].y > list[i].y)){
+                min = j;
+            }
+        }
+        swap(list[i],list[min]);
+    }
+>>>>>>> origin
 }
 int main(){
     vector<P> list;
     int n; cin>>n;
     inputVec(list,n);
+<<<<<<< HEAD
     MergeSort(list,0,list.size()-1);
     outputVec(list);
     return 0;   
+=======
+    sele_s(list);
+    outputVec(list);
+    vector<P>().swap(list);
+    return 0;
+>>>>>>> origin
 }

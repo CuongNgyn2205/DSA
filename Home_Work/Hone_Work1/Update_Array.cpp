@@ -1,62 +1,37 @@
 #include<bits/stdc++.h>
 using namespace std;
-void inputVector(vector<int> &list,int &n){
-    list.push_back(n);
-}
-void delete_object(vector<int>&list){
-    int max = list[0];
-    for(int i =0 ; i < list.back(); i ++){
-        if(max < list[i]){
-            max = list [i];
-        }
-    }
-    for(int i = 0 ;i < list.back(); i ++){
-        if(max == list[i]){
-            list.erase(list.begin() + i);
-        }
-    }
-}
-void outputVector(vector<int> list){
-    for(int i = 0 ;i < list.back(); i ++){
+void outputVec(vector<int> list){
+    for(int i = 0 ;i < list.size(); i++){
         cout<<list[i]<<endl;
     }
-    cout<<endl;
 }
-void QuickSort(vector<int> &list, int l, int r){
-    l = 0; r = list.back() - 1;
-    int i = l, j = r;
-    while(i<=j){
-        int pivot = list[(l+r)/2];
-        while(list[i]>pivot){
-            i++;
+void Delete(vector<int> &list){
+    int max = list[0];
+    for(int i = 0 ;i < list.size();i++){
+        if( max < list[i]){
+            max = list[i];
         }
-        while(list[j]<pivot){
-            j--;
-        }
-        swap(list[i],list[j]);
     }
-    if(l < j){
-        QuickSort(list,l,j);
-    }
-    if(r > i){
-        QuickSort(list,i,r);
-    }
+    list.erase(remove(list.begin(),list.end(),max),list.end());              
+
 }
 int main(){
     vector<int> list;
     while(1){
-        int n;cin>>n;
-        // else if( n == -1){
-        //     delete_object(list);
-        // }
-        if(n != -1 || n != -2){
-            inputVector(list,n);
-        }
-        else if(n == -2){
-            QuickSort(list,0,list.back()-1);
-            outputVector(list);
+        int n; cin>>n;
+        if(n == -2){
+            sort(list.begin(),list.end(),greater<int>());
+            cout<<list.size()<<endl;
+            outputVec(list);
             break;
         }
+        else if(n == -1){
+            Delete(list);
+        }
+        else{
+            int tmp = n;
+            list.push_back(tmp);
+        }
     }
-    
+    return 0;
 }

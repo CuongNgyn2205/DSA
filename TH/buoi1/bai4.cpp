@@ -14,27 +14,27 @@ void inputArray(int *a, int n){
     }
 }
 void Merge(int *a, int n, int *b, int m){
-    int *c = new int [n+m];
-    int i = n, j = m, nc = 0;
-    while(i<n && j<m){
-        if(a[i]<b[j]){
+    int * c = new int [n + m];
+    int i = 0 , j = 0;
+    int nc = 0;
+    while(i < n && j < m){
+        if(a[i] < b[j]){
             c[nc++] = a[i++];
         }
         else {
-            c[nc++] =b[j++];
+            c[nc++] = b[j++];
         }
     }
-    while(i<n){
+    while(i < n){
         c[nc++] = a[i++];
     }
-    while(j<m){
-        c[nc++]=b[j++];
+    while(j < m){
+        c[nc++] = a[j++];
     }
-    for(int k = 0 ;k < nc ;k ++){
-        cout<<c[k]<<" ";
+    for(int i = 0 ;i < nc;i ++){
+        cout<<c[i]<< " ";
     }
 }
-using namespace std;
 int main(){
     int t = 0;
     cin>>t;
