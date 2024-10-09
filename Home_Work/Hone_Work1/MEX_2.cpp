@@ -37,13 +37,14 @@ int binarySearch(vector<int> a,int key){
 void MEX(vector<int> a,vector<int> &b){
     int mex = 0;
     for(int i =0 ;i < a.size();i  ++){
-        int exist = binarySearch(b,mex);
+        
         while(1){
+            int exist = binarySearch(b,mex);
             if(exist == 1){
-                cout<<mex<<" ";
-            }
-            else if(exist == mex){
                 mex++;
+            }
+            else{
+                cout<<mex<<" ";
                 break;
             }
         }
