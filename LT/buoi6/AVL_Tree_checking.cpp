@@ -83,23 +83,19 @@ int depthOfRightTree(Tree T){
     }
     return depthOfRightTree(T->right) + 1;
 }
-int cdepleft(Tree T){
-    if(!T){
-        return 0;
-    }
-    cdepleft(T->left);
-}
 int isAVL(Tree T){
     if(T==NULL){
         return 1;
     }
-    else if(!cdepleft(T->left)){
+    else if(!isAVL(T->left)){
         return 0;
     }
-    else if(!cdepright(T->right)){
+    else if(!isAVL(T->right)){
         return 0;
     }
-
+    else if(abs(isAVL(T->left) - isAVL(T->right)) > 1){
+        return 0;
+    }
     return 1;
 }
 int main()
