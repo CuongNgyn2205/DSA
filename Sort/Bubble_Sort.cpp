@@ -1,14 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
-void BBSort(int *a ,int n){
+void BubbleBSort(int *a ,int n){
     for(int i = 0;i < n - 1; i ++){
         for(int j = 0 ;j < n - 1 ;j ++){
             if(a[j] > a[j + 1]){
                 swap(a[j],a[j + 1]);
-                for(int k = 0 ;k < n; k ++){
-                    cout<<a[k]<<" ";
-                }
-                cout<<endl;
+                
             }
         }
     }
@@ -19,6 +16,9 @@ int main(){
     for(int i= 0; i <n ;i ++){
         cin>>a[i];
     }
-    BBSort(a,n);
+    BubbleBSort(a,n);
+    for(int i = 0;i < n;i ++){
+        cout<<a[i]<<" ";
+    }
     return 0;
 }
