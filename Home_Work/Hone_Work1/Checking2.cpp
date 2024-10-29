@@ -22,9 +22,12 @@ struct ID{
     string id;
     int n;
 };
-int find(vector<ID> a, string temp){
+void init(ID &temp){
+    temp.n = 1;
+}
+int find(vector<ID> a, ID temp){
     for(int i = 0;i < a.size() ; i ++){
-        if(a[i].id == temp){
+        if(a[i].id == temp.id){
             return i;
         }
     }
@@ -87,13 +90,17 @@ int main(){
     vector<ID> a;
     int n; cin>>n;
     for(int i = 0;i < n;i ++){
-        string temp;
-        cin>>temp;
+        ID temp;
+        cin>>temp.id;
+        init(temp);
         int pos = find (a,temp);
         if(pos!=-1){
             a[pos].n++;
         }
-        else a.push_back({temp,1});
+        else {
+            a.push_back(temp);
+        }
+        
     }
     MergeSort(a,0,a.size()-1);
     outputVec(a);

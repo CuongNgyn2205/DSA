@@ -18,37 +18,9 @@ using namespace std;
 
 
 //###INSERT CODE HERE -
-int binarySearch(vector<int> a,int key){
-    int l = 0, r = a.size() - 1;
-    while(l<=r){
-        int mid = l + (r-l)/2;
-        if(a[mid] > key){
-            r = mid - 1;
-        }
-        else if(a[mid] < key){
-            l = mid + 1;
-        }
-        else if( a[mid] == key){
-            return 1;
-        }
-    }
-    return key;
-}
-void MEX(vector<int> a,vector<int> &b){
-    int mex = 0;
-    for(int i =0 ;i < a.size();i  ++){
-        
-        while(1){
-            int exist = binarySearch(b,mex);
-            if(exist == 1){
-                mex++;
-            }
-            else{
-                cout<<mex<<" ";
-                break;
-            }
-        }
-    }
+void MEX(vector<int> a){
+    vector<bool> b(a.size() + 1, false);
+    
 }
 void outputVec(vector<int> a){
     for(int i = 0;i < a.size() ;i ++){
@@ -63,9 +35,7 @@ int main(){
         cin>>temp;
         a.push_back(temp);
     }
-    vector<int> b;
-    MEX(a,b);
-    outputVec(b);
+    MEX(a);
 
     return 0;
 }
