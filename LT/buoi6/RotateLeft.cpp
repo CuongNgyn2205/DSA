@@ -157,6 +157,16 @@ void RotateLeft(Tree &T){
     p->left = T;
     T = p;
 }
+void RotateRigth(Tree &T){
+    if(T->left == NULL){
+        cout<<"Khong the xoay trai vi khong co nut con ben trai "<<endl;
+        return ;
+    }
+    node*p = T->right;
+    T->left = p->right;
+    p->right = T;
+    T = p;
+}
 int main()
 {
 	Tree T = NULL;
